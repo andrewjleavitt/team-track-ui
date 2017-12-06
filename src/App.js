@@ -27,7 +27,7 @@ class App extends Component {
                     </nav>
 
                     <Route path={"/"} component={Home}/>
-                    <Route exact path={"/teams"} component={Teams}/>
+                    <Route path={"/teams"} component={Teams}/>
                     <Route path={"/teams/add"} component={AddTeam}/>
                 </div>
             </Router>
