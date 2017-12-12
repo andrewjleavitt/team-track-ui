@@ -3,7 +3,7 @@ import React from 'react'
 function Header(props) {
     return (
         <header>
-            <h1>Welcome to Team Track</h1>
+            <h1>TeamTrack</h1>
         </header>
     )
 }

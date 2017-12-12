@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-// import AddService from '../lib/AddService'
-
 class AddTeam extends Component {
 
     state = {
@@ -29,8 +27,10 @@ class AddTeam extends Component {
 
         fetch(request).then((response) => {
             return response.json()
-        }).then((json) => {
-            console.log('Added Team')
+        }).then((team) => {
+            console.log('Added TeamItem')
+            this.props.addTeamToList(team)
+            this.setState({name: ''})
         })
 
         event.preventDefault()
