@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import TeamService from "../lib/TeamService";
 
 class AddTeam extends Component {
 
@@ -11,28 +12,8 @@ class AddTeam extends Component {
     }
 
     handleSubmit = (event) => {
-        const body = {team: {name: this.state.name}}
-        const method = 'POST'
-        const url = 'http://localhost:3030'
-        const init = {
-            method: method,
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        }
-
-        const request = new Request(`${url}/teams`, init)
-
-        fetch(request).then((response) => {
-            return response.json()
-        }).then((team) => {
-            console.log('Added TeamItem')
-            this.props.addTeamToList(team)
-            this.setState({name: ''})
-        })
-
+        TeamService.addTeam(this.state.name, this.props.addTeamToList)
+        this.setState({name: ''})
         event.preventDefault()
     }
 

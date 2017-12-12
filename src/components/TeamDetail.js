@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import TeamMembers from './TeamMembers'
+import AddTeamMember from './AddTeamMember'
 import TeamService from "../lib/TeamService";
 
 class TeamDetail extends Component {
@@ -29,6 +30,7 @@ class TeamDetail extends Component {
         const members = this.state.members
         return (
             <div>
+                <AddTeamMember team={team}/>
                 <TeamMembers team={team} members={members}/>
             </div>
         )

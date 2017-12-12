@@ -41,6 +41,30 @@ const TeamService = {
         }).then((json) => {
             callback(json)
         })
+    },
+
+    addTeam: function(teamName, callback) {
+        console.log(teamName)
+        const body = {team: {name: teamName}}
+        const method = 'POST'
+        const url = 'http://localhost:3030'
+        const init = {
+            method: method,
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }
+
+        const request = new Request(`${url}/teams`, init)
+
+        fetch(request).then((response) => {
+            return response.json()
+        }).then((team) => {
+            callback(team)
+        })
+
     }
 }
 
