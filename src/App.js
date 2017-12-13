@@ -25,6 +25,10 @@ class App extends Component {
         this.setState({selectedTeam: team})
     }
 
+    onTeamCloseClick = () => {
+        this.setState({selectedTeam: null})
+    }
+
     addTeamToList = (team) => {
         this.setState({teams: [...this.state.teams, team]})
     }
@@ -39,6 +43,7 @@ class App extends Component {
                     selectedTeam={this.state.selectedTeam}
                     addTeamToList={this.addTeamToList}
                     onTeamClick={this.onTeamClick}
+                    onTeamCloseClick={this.onTeamCloseClick}
                 />
             </div>
         );

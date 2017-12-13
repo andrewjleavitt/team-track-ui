@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TeamMembers(props) {
+function MemberList(props) {
     const team = props.team
     const members = props.members
 
@@ -17,4 +17,4 @@ function TeamMembers(props) {
     )
 }
 
-export default TeamMembers
+export default MemberList

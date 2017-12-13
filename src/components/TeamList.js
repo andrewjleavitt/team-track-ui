@@ -9,8 +9,6 @@ class TeamList extends React.Component {
         if(this.selectedTeam == null) {
             return
         }
-
-
     }
 
     render() {
@@ -26,7 +24,7 @@ class TeamList extends React.Component {
                 active={true}/>
         })
 
-        const teamDetail = selectedTeam == null ? undefined : <TeamDetail team={selectedTeam}/>
+        const teamDetail = selectedTeam == null ? undefined : <TeamDetail team={selectedTeam} onTeamCloseClick={this.props.onTeamCloseClick}/>
 
         return (
             <div>

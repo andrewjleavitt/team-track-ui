@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import Members from './Members'
+import MemberList from './MemberList'
 import AddMember from './AddMember'
 import TeamService from "../lib/TeamService";
+import TeamClose from './TeamClose'
 
 class TeamDetail extends Component {
 
@@ -32,10 +33,12 @@ class TeamDetail extends Component {
     render() {
         const team = this.props.team
         const members = this.state.members
+        const onTeamCloseClick = this.props.onTeamCloseClick
         return (
             <div>
                 <AddMember team={team} addMemberToList={this.addMemberToList}/>
-                <Members team={team} members={members}/>
+                <MemberList team={team} members={members}/>
+                <TeamClose onTeamCloseClick={onTeamCloseClick}/>
             </div>
         )
     }
