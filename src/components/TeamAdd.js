@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import TeamService from "../lib/TeamService";
 
-class AddTeam extends Component {
+class TeamAdd extends Component {
 
     state = {
         name: ''
@@ -33,4 +33,4 @@ class AddTeam extends Component {
     }
 }
 
-export default AddTeam
+export default TeamAdd

@@ -1,6 +1,6 @@
 import React from 'react'
 import TeamItem from './TeamItem'
-import AddTeam from './AddTeam'
+import AddTeam from './TeamAdd'
 import TeamDetail from './TeamDetail'
 
 class TeamList extends React.Component {
