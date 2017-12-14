@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {Panel} from 'pivotal-ui/react/panels'
+import {TileLayout, TileLayoutItem} from 'pivotal-ui/react/tile-layout'
+
 import Header from './components/Header'
 import Home from './components/Home'
 import TeamList from './components/TeamList'
@@ -51,25 +54,31 @@ class App extends Component {
       <div className="App">
         <Header/>
         <Home/>
-        <div className="projects-container">
-          <h2>Projects</h2>
-        </div>
-        <div className="people-container">
-          <h2>People</h2>
-          <MemberList
-            members={this.state.members}
-            addMemberToList={this.addMemberToList}/>
-        </div>
-        <div>
-          <h2>Teams</h2>
-          <TeamList
-            teams={this.state.teams}
-            focusedTeam={this.state.focusedTeam}
-            addTeamToList={this.addTeamToList}
-            onTeamClick={this.onTeamClick}
-            onTeamCloseClick={this.onTeamCloseClick}
-          />
-        </div>
+        <TileLayout columns={3}>
+          <TileLayoutItem>
+            <Panel header='Teams'>
+              <TeamList
+                teams={this.state.teams}
+                focusedTeam={this.state.focusedTeam}
+                addTeamToList={this.addTeamToList}
+                onTeamClick={this.onTeamClick}
+                onTeamCloseClick={this.onTeamCloseClick}
+              />
+            </Panel>
+          </TileLayoutItem>
+          <TileLayoutItem>
+            <Panel header='People'>
+              <MemberList
+                members={this.state.members}
+                addMemberToList={this.addMemberToList}/>
+            </Panel>
+          </TileLayoutItem>
+          <TileLayoutItem>
+            <Panel header='Projects'>
+              <p>WHere the projects will live</p>
+            </Panel>
+          </TileLayoutItem>
+        </TileLayout>
       </div>
     );
   }
