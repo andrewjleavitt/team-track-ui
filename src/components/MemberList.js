@@ -10,7 +10,7 @@ function MemberList(props) {
   return (
     <div>
       <MemberAdd addMemberToList={props.addMemberToList}/>
-      {memberList}
+      <ul>{memberList}</ul>
     </div>
   )
 }

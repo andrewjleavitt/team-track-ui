@@ -30,7 +30,6 @@ class TeamList extends React.Component {
     return (
       <div>
         <AddTeam addTeamToList={this.props.addTeamToList}/>
-        <h3>Team List</h3>
         <ul>{teamList}</ul>
         {teamDetail}
       </div>
