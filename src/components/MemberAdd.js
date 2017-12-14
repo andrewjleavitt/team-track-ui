@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import TeamService from "../lib/TeamService";
+import React from 'react'
+import MemberService from "../lib/MemberService";
 
-class TeamAdd extends Component {
+class MemberAdd extends React.Component {
 
   state = {
     name: ''
@@ -12,7 +12,8 @@ class TeamAdd extends Component {
   }
 
   handleSubmit = (event) => {
-    TeamService.addTeam(this.state.name, this.props.addTeamToList)
+    const memberName = this.state.name
+    MemberService.addMember(memberName, this.props.addMemberToList)
     this.setState({name: ''})
     event.preventDefault()
   }
@@ -20,17 +21,17 @@ class TeamAdd extends Component {
   render() {
     return (
       <div>
-        <h3>Add a team</h3>
+        <h3>Add a Member</h3>
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
           </label>
-          <input type="submit" value="Add Team"/>
+          <input type="submit" value="Add Team Member"/>
         </form>
       </div>
     )
   }
 }
 
-export default TeamAdd
+export default MemberAdd
