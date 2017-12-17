@@ -1,17 +1,21 @@
-import React, {Component} from 'react'
+import React from 'react'
 import TeamClose from './TeamClose'
+import 'pivotal-ui/css/modals'
 
-class TeamDetail extends Component {
+function TeamDetail(props) {
 
-  render() {
-    const onTeamCloseClick = this.props.onTeamCloseClick
-    return (
+  const team = props.team
+  const onTeamCloseClick = props.onTeamCloseClick
+
+  return (
+    <div>
+      <h2>{team.name}</h2>
       <div>
-        <span>Drag a member to add to this team</span>
-        <TeamClose onTeamCloseClick={onTeamCloseClick}/>
+        <span>{team.name}</span>
       </div>
-    )
-  }
+      <TeamClose onTeamCloseClick={onTeamCloseClick}/>
+    </div>
+  )
 }
 
 export default TeamDetail
