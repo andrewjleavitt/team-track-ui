@@ -1,6 +1,5 @@
 import React from 'react'
 import TeamClose from './TeamClose'
-import 'pivotal-ui/css/modals'
 
 function TeamDetail(props) {
 
