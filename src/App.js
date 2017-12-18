@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
-
-import Header from './components/Header'
-import Home from './components/Home'
+import Navigation from './components/Navigation'
 import TeamList from './components/TeamList'
 import TeamService from './lib/TeamService'
 import MemberService from './lib/MemberService'
 
 import './App.css';
 import MemberList from "./components/MemberList";
+import {Container} from 'semantic-ui-react'
 
 class App extends Component {
 
@@ -15,7 +14,8 @@ class App extends Component {
     teams: [],
     members: [],
     focusedTeam: null,
-    focusedMember: null
+    focusedMember: null,
+    focusedMenuItem: null
   }
 
   componentWillMount() {
@@ -56,36 +56,42 @@ class App extends Component {
     this.setState({members: [...this.state.members, member]})
   }
 
+  onMenuItemClick = (item) => {
+    this.setState({focusedMenuItem: item})
+  }
+
 
   render() {
     return (
       <div className="App">
-        <Header/>
-        <Home/>
-          <div>
-            <h2>Teams</h2>
-              <TeamList
-                teams={this.state.teams}
-                focusedTeam={this.state.focusedTeam}
-                addTeamToList={this.addTeamToList}
-                onTeamClick={this.onTeamClick}
-                onTeamCloseClick={this.onTeamCloseClick}
-              />
-          </div>
-          <div>
-            <h2>People</h2>
-              <MemberList
-                members={this.state.members}
-                focusedMember={this.state.focusedMember}
-                addMemberToList={this.addMemberToList}
-                onMemberClick={this.onMemberClick}
-                onMemberCloseClick={this.onMemberCloseClick}
-                />
-          </div>
-          <div>
-            <h2>Projects</h2>
-              <p>WHere the projects will live</p>
-          </div>
+        <Navigation
+          onMenuItemClick={this.onMenuItemClick}
+          focusedMenuItem={this.state.focusedMenuItem}
+        />
+        <Container>
+          <h2>Teams</h2>
+          <TeamList
+            teams={this.state.teams}
+            focusedTeam={this.state.focusedTeam}
+            addTeamToList={this.addTeamToList}
+            onTeamClick={this.onTeamClick}
+            onTeamCloseClick={this.onTeamCloseClick}
+          />
+        </Container>
+        <Container>
+          <h2>People</h2>
+          <MemberList
+            members={this.state.members}
+            focusedMember={this.state.focusedMember}
+            addMemberToList={this.addMemberToList}
+            onMemberClick={this.onMemberClick}
+            onMemberCloseClick={this.onMemberCloseClick}
+          />
+        </Container>
+        <Container>
+          <h2>Projects</h2>
+          <p>WHere the projects will live</p>
+        </Container>
       </div>
     );
   }
