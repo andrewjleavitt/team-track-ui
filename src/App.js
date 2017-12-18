@@ -6,7 +6,7 @@ import MemberService from './lib/MemberService'
 
 import './App.css';
 import MemberList from "./components/MemberList";
-import {Container} from 'semantic-ui-react'
+import {Container, Divider} from 'semantic-ui-react'
 
 class App extends Component {
 
@@ -60,37 +60,45 @@ class App extends Component {
     this.setState({focusedMenuItem: item})
   }
 
-
   render() {
     return (
       <div className="App">
-        <Navigation
-          onMenuItemClick={this.onMenuItemClick}
-          focusedMenuItem={this.state.focusedMenuItem}
-        />
         <Container>
-          <h2>Teams</h2>
-          <TeamList
-            teams={this.state.teams}
-            focusedTeam={this.state.focusedTeam}
-            addTeamToList={this.addTeamToList}
-            onTeamClick={this.onTeamClick}
-            onTeamCloseClick={this.onTeamCloseClick}
+          <Navigation
+            onMenuItemClick={this.onMenuItemClick}
+            focusedMenuItem={this.state.focusedMenuItem}
           />
-        </Container>
-        <Container>
-          <h2>People</h2>
-          <MemberList
-            members={this.state.members}
-            focusedMember={this.state.focusedMember}
-            addMemberToList={this.addMemberToList}
-            onMemberClick={this.onMemberClick}
-            onMemberCloseClick={this.onMemberCloseClick}
-          />
-        </Container>
-        <Container>
-          <h2>Projects</h2>
-          <p>WHere the projects will live</p>
+          <Divider/>
+          {this.state.focusedMenuItem !== 'teams' ? undefined : (
+            <Container>
+              <h2>Teams</h2>
+              <TeamList
+                teams={this.state.teams}
+                focusedTeam={this.state.focusedTeam}
+                addTeamToList={this.addTeamToList}
+                onTeamClick={this.onTeamClick}
+                onTeamCloseClick={this.onTeamCloseClick}
+              />
+            </Container>
+          )}
+          {this.state.focusedMenuItem !== 'people' ? undefined : (
+            <Container>
+              <h2>People</h2>
+              <MemberList
+                members={this.state.members}
+                focusedMember={this.state.focusedMember}
+                addMemberToList={this.addMemberToList}
+                onMemberClick={this.onMemberClick}
+                onMemberCloseClick={this.onMemberCloseClick}
+              />
+            </Container>
+          )}
+          {this.state.focusedMenuItem !== 'projects' ? undefined : (
+            <Container>
+              <h2>Projects</h2>
+              <p>WHere the projects will live</p>
+            </Container>
+          )}
         </Container>
       </div>
     );

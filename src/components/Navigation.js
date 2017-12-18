@@ -13,7 +13,7 @@ function Navigation(props) {
   })
 
   return (
-    <Menu text fixed='top'>
+    <Menu text>
       <Container>
         <Menu.Item header>Team Track</Menu.Item>
         {menu_items}
