@@ -1,5 +1,6 @@
 import React from 'react'
 import MemberService from "../lib/MemberService";
+import {Form, Button} from 'semantic-ui-react'
 
 class MemberAdd extends React.Component {
 
@@ -22,13 +23,18 @@ class MemberAdd extends React.Component {
     return (
       <div>
         <h3>Add a Member</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
-          </label>
-          <input type="submit" value="Add Team Member"/>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Field
+              control='input'
+              label='Name'
+              name='name'
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button type="submit">Add Team Member</Button>
+        </Form>
       </div>
     )
   }

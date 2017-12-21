@@ -1,5 +1,5 @@
 import React from 'react'
-import {Select} from 'semantic-ui-react'
+import {Select, Form, Button} from 'semantic-ui-react'
 import MemberService from '../lib/MemberService'
 
 class AssignMemberToTeam extends React.Component {
@@ -29,12 +29,17 @@ class AssignMemberToTeam extends React.Component {
     return (
       <div>
         <h3>Assign {member.name} to team</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>Team:
-            <Select placeholder='Select a team' options={teamOptions} onChange={this.handleSelectTeam}/>
-          </label>
-          <input type="submit" value="Assign"/>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Select
+              label='New Team Assignment'
+              placeholder='Select a team'
+              options={teamOptions}
+              onChange={this.handleSelectTeam}
+            />
+          </Form.Group>
+          <Button type="submit">Assign</Button>
+        </Form>
       </div>
     )
   }

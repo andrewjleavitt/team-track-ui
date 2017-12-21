@@ -1,7 +1,8 @@
 import React from 'react'
-import TeamAssignmentService from '../lib/TeamAssignmentService'
+import MemberService from '../lib/MemberService'
 import TeamAssignment from './TeamAssignment'
 import AssignMemberToTeam from './AssignMemberToTeam'
+import {List} from 'semantic-ui-react'
 
 
 class TeamAssignmentList extends React.Component {
@@ -11,11 +12,11 @@ class TeamAssignmentList extends React.Component {
   }
 
   componentWillMount() {
-    TeamAssignmentService.fetchTeamAssignmentListFor(this.props.member, this.teamAssignmentsFetched)
+    MemberService.fetchTeamAssignmentListFor(this.props.member, this.teamAssignmentsFetched)
   }
 
   componentWillReceiveProps(nextProps) {
-    TeamAssignmentService.fetchTeamAssignmentListFor(nextProps.member, this.teamAssignmentsFetched)
+    MemberService.fetchTeamAssignmentListFor(nextProps.member, this.teamAssignmentsFetched)
   }
 
   teamAssignmentsFetched = (teamAssignmentList) => {
@@ -30,18 +31,25 @@ class TeamAssignmentList extends React.Component {
     const teams = this.props.teams
     const teamAssignments = this.state.teamAssignmentList.map((teamAssignment) => {
       const team = teams.filter(team => team.id === teamAssignment.team_id)
-      return <TeamAssignment
-        key={teamAssignment.id}
-        teamAssignment={teamAssignment}
-        team={team[0]}
-      />
+      return (
+        <List.Item>
+          <TeamAssignment
+            key={teamAssignment.id}
+            teamAssignment={teamAssignment}
+            team={team[0]}
+          />
+        </List.Item>
+      )
     })
 
     return (
       <div>
-        <AssignMemberToTeam member={this.props.member} teams={teams} addTeamAssignmentToList={this.addTeamAssignmentToList}/>
+        <AssignMemberToTeam member={this.props.member} teams={teams}
+                            addTeamAssignmentToList={this.addTeamAssignmentToList}/>
         <h3>Team Assignments</h3>
-        {teamAssignments}
+        <List divided relaxed>
+          {teamAssignments}
+        </List>
       </div>
     )
   }
