@@ -4,7 +4,6 @@ import {Menu, Container} from 'semantic-ui-react'
 function Navigation(props) {
   const focusedMenuItem = props.focusedMenuItem
   const onMenuItemClick = props.onMenuItemClick
-
   const menuItemsArray = ['people', 'projects', 'teams']
 
   const menu_items = menuItemsArray.map((item) => {

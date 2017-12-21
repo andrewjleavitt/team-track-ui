@@ -41,6 +41,30 @@ const MemberService = {
     }).then((team) => {
       callback(team)
     })
+  },
+
+  assignToTeam(options, callback) {
+    const {member_id, team_id} = options
+    const body = {team_assignment: {member_id: member_id, team_id: team_id}}
+
+    const method = 'POST'
+    const url = 'http://localhost:3030'
+    const init = {
+      method: method,
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }
+
+    const request = new Request(`${url}/team_assignments`, init)
+
+    fetch(request).then((response) => {
+      return response.json()
+    }).then((team_assignment) => {
+      callback(team_assignment)
+    })
   }
 }
 

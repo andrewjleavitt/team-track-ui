@@ -36,7 +36,6 @@ class App extends Component {
   }
 
   onMemberClick = (member) => {
-    console.log("member clicked:" + member.name)
     this.setState({focusedMember: member})
   }
 
@@ -90,6 +89,7 @@ class App extends Component {
                 addMemberToList={this.addMemberToList}
                 onMemberClick={this.onMemberClick}
                 onMemberCloseClick={this.onMemberCloseClick}
+                teams={this.state.teams}
               />
             </Container>
           )}

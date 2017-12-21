@@ -15,7 +15,7 @@ function MemberList(props) {
   })
 
   const memberDetail = focusedMember == null ? undefined :
-    <MemberDetail member={focusedMember} onMemberCloseClick={onMemberCloseClick}/>
+    <MemberDetail member={focusedMember} onMemberCloseClick={onMemberCloseClick} teams={props.teams}/>
 
   return (
     <div>
