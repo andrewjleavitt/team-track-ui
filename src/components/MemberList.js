@@ -4,7 +4,7 @@ import MemberDetail from './MemberDetail'
 import {Grid, List} from 'semantic-ui-react'
 
 function MemberList(props) {
-  const onMemberCloseClick = props.onMemberCloseClick
+  const onClearClick = props.onClearClick
   const focusedMember = props.focusedMember
   const members = props.members
   const memberList = members.map((member) => {
@@ -16,7 +16,7 @@ function MemberList(props) {
   })
 
   const memberDetail = focusedMember == null ? undefined :
-    <MemberDetail member={focusedMember} onMemberCloseClick={onMemberCloseClick} teams={props.teams}/>
+    <MemberDetail member={focusedMember} onClearClick={onClearClick} teams={props.teams}/>
 
   return (
     <Grid columns={2} divided>

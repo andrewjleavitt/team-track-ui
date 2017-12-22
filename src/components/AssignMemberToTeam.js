@@ -1,5 +1,5 @@
 import React from 'react'
-import {Select, Form, Button} from 'semantic-ui-react'
+import {Form, Button} from 'semantic-ui-react'
 import MemberService from '../lib/MemberService'
 
 class AssignMemberToTeam extends React.Component {
@@ -10,7 +10,7 @@ class AssignMemberToTeam extends React.Component {
 
   handleSelectTeam = (event, result) => {
     const {name, value} = result
-    this.setState({selectedTeam: value})
+    this.setState({[name]: value})
   }
 
   handleSubmit = (event) => {

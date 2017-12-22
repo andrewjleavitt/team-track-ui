@@ -1,16 +1,15 @@
 import React from 'react'
-import MemberClose from './MemberClose'
+import Clear from './Clear'
 import TeamAssignmentList from './TeamAssignmentList'
 
 function MemberDetail(props) {
-
   const member = props.member
-  const onMemberCloseClick = props.onMemberCloseClick
+  const onClearClick = props.onClearClick
   const teams = props.teams
 
   return (
     <div>
-      <MemberClose onMemberCloseClick={onMemberCloseClick}/>
+      <Clear onClearClick={onClearClick} stateToClear='focusedMember'/>
       <h2>{member.name}</h2>
       <div>
         <TeamAssignmentList member={member} teams={teams}/>

@@ -5,7 +5,7 @@ import TeamDetail from './TeamDetail'
 
 
 function TeamList(props) {
-    const onTeamCloseClick = props.onTeamCloseClick
+    const onClearClick = props.onClearClick
     const focusedTeam = props.focusedTeam
     const teams = props.teams
     const teamList = teams.map((team) => {
@@ -17,12 +17,11 @@ function TeamList(props) {
           }}
           team={team}
           active={true}/>
-
       )
     })
 
     const teamDetail = focusedTeam == null ? undefined :
-      <TeamDetail team={focusedTeam} onTeamCloseClick={onTeamCloseClick}/>
+      <TeamDetail team={focusedTeam} onClearClick={onClearClick}/>
 
     return (
       <div>

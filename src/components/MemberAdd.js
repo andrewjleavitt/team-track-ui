@@ -1,6 +1,6 @@
 import React from 'react'
 import MemberService from "../lib/MemberService";
-import {Form, Button} from 'semantic-ui-react'
+import {Form, Button, Header} from 'semantic-ui-react'
 
 class MemberAdd extends React.Component {
 
@@ -22,7 +22,7 @@ class MemberAdd extends React.Component {
   render() {
     return (
       <div>
-        <h3>Add a Member</h3>
+        <Header size='small'>Add a Member</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Field

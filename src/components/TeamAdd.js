@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import TeamService from "../lib/TeamService";
+import {Header} from 'semantic-ui-react'
 
 class TeamAdd extends Component {
 
@@ -20,7 +21,7 @@ class TeamAdd extends Component {
   render() {
     return (
       <div>
-        <h3>Add a team</h3>
+        <Header size='small'>Add a team</Header>
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:

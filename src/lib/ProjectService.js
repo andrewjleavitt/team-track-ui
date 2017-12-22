@@ -1,8 +1,8 @@
-const TeamService = {
-  fetchTeams: function (callback) {
+const ProjectService = {
+  fetchProjectList: function (callback) {
     const method = 'GET'
     const host = 'http://localhost:3030'
-    const url = `${host}/teams`
+    const url = `${host}/projects`
     const init = {
       method: method,
       headers: {
@@ -21,30 +21,15 @@ const TeamService = {
     })
   },
 
-  fetchTeamMembers: function (team, callback) {
-    const method = 'GET'
-    const host = 'http://localhost:3030'
-    const url = `${host}/teams/${team.id}/members`
-    const init = {
-      method: method,
-      headers: {
-        'Content-Type': 'application/json'
+  addProject: function (options, callback) {
+    const {name, status, health} = options
+    const body = {
+      project: {
+        name: name,
+        status: status,
+        health: health
       }
     }
-
-    const request = new Request(url, init)
-
-    return fetch(request).then((response) => {
-      if (response.ok) {
-        return response.json()
-      }
-    }).then((json) => {
-      callback(json)
-    })
-  },
-
-  addTeam: function (teamName, callback) {
-    const body = {team: {name: teamName}}
     const method = 'POST'
     const url = 'http://localhost:3030'
     const init = {
@@ -56,14 +41,14 @@ const TeamService = {
       body: JSON.stringify(body)
     }
 
-    const request = new Request(`${url}/teams`, init)
+    const request = new Request(`${url}/projects`, init)
 
     fetch(request).then((response) => {
       return response.json()
     }).then((team) => {
       callback(team)
     })
-  },
+  }
 }
 
-export default TeamService
+export default ProjectService

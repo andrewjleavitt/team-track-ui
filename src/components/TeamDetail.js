@@ -1,10 +1,10 @@
 import React from 'react'
-import TeamClose from './TeamClose'
+import Clear from './Clear'
 
 function TeamDetail(props) {
 
   const team = props.team
-  const onTeamCloseClick = props.onTeamCloseClick
+  const onClearClick = props.onClearClick
 
   return (
     <div>
@@ -12,7 +12,7 @@ function TeamDetail(props) {
       <div>
         <span>{team.name}</span>
       </div>
-      <TeamClose onTeamCloseClick={onTeamCloseClick}/>
+      <Clear onClearClick={onClearClick} stateToClear='focusedTeam'/>
     </div>
   )
 }
