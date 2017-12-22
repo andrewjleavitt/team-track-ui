@@ -1,8 +1,9 @@
 import React from 'react'
+import {Button} from 'semantic-ui-react'
 
 function Clear(props) {
   const stateToClear = props.stateToClear
-  return <button onClick={()=>props.onClearClick(stateToClear)}>Close</button>
+  return <Button onClick={()=>props.onClearClick(stateToClear)}>Close</Button>
 }
 
 export default Clear

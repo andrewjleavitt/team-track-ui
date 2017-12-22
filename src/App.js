@@ -36,12 +36,9 @@ class App extends Component {
     this.setState({focusedTeam: team})
   }
 
-  onTeamCloseClick = () => {
-    this.setState({focusedTeam: null})
-  }
-
   addTeamToList = (team) => {
     this.setState({teams: [...this.state.teams, team]})
+    this.setState({focusedTeam: team})
   }
 
   membersFetched = (data) => {
@@ -52,12 +49,9 @@ class App extends Component {
     this.setState({focusedMember: member})
   }
 
-  onMemberCloseClick = () => {
-    this.setState({focusedMember: null})
-  }
-
   addMemberToList = (member) => {
     this.setState({members: [...this.state.members, member]})
+    this.setState({focusedMember: member})
   }
 
   projectsFetched = (data) => {
@@ -68,12 +62,10 @@ class App extends Component {
     this.setState({focusedProject: project})
   }
 
-  onProjectCloseClick = () => {
-    this.setState({focusedProject: null})
-  }
 
   addProjectToList = (project) => {
     this.setState({projects: [...this.state.projects, project]})
+    this.setState({focusedProject: project})
   }
 
   onClearClick = (stateToClear) => {
