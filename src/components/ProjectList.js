@@ -21,14 +21,14 @@ function ProjectList(props) {
     )
   })
 
-  const projectDetail = focusedProject == null ? undefined :
-    <ProjectDetail project={focusedProject} onClearClick={onClearClick} stateToClear='focusedProject'/>
+  const projectDetail = focusedProject == null ?
+    <ProjectAdd addProjectToList={props.addProjectToList}/>
+    : <ProjectDetail project={focusedProject} onClearClick={onClearClick} stateToClear='focusedProject'/>
 
   return (
     <Grid columns={2} divided>
       <Grid.Row>
         <Grid.Column width={4}>
-          <ProjectAdd addProjectToList={props.addProjectToList}/>
           <List divided relaxed>{projectList}</List>
         </Grid.Column>
         <Grid.Column width={12}>

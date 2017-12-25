@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import TeamService from "../lib/TeamService";
-import {Header} from 'semantic-ui-react'
-
+import {Header, Form, Button} from 'semantic-ui-react'
 class TeamAdd extends Component {
 
   state = {
@@ -22,13 +21,17 @@ class TeamAdd extends Component {
     return (
       <div>
         <Header size='small'>Add a team</Header>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
-          </label>
-          <input type="submit" value="Add Team"/>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Field
+              control="input"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button type="submit">Add Team</Button>
+        </Form>
       </div>
     )
   }

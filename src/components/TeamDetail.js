@@ -11,6 +11,7 @@ function TeamDetail(props) {
       <h2>{team.name}</h2>
       <div>
         <span>{team.name}</span>
+        <span>{team.id}</span>
       </div>
       <Clear onClearClick={onClearClick} stateToClear='focusedTeam'/>
     </div>

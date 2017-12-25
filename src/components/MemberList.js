@@ -15,14 +15,14 @@ function MemberList(props) {
     </List.Item>
   })
 
-  const memberDetail = focusedMember == null ? undefined :
-    <MemberDetail member={focusedMember} onClearClick={onClearClick} teams={props.teams}/>
+  const memberDetail = focusedMember == null ?
+    <MemberAdd addMemberToList={props.addMemberToList}/>
+    : <MemberDetail member={focusedMember} onClearClick={onClearClick} teams={props.teams}/>
 
   return (
     <Grid columns={2} divided>
       <Grid.Row>
         <Grid.Column width={4}>
-          <MemberAdd addMemberToList={props.addMemberToList}/>
           <List divided relaxed>{memberList}</List>
         </Grid.Column>
         <Grid.Column width={12}>
