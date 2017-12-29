@@ -6,6 +6,7 @@ import ProjectDetail from './ProjectDetail'
 function ProjectList(props) {
   const projects = props.projects
   const focusedProject = props.focusedProject
+  const teams = props.teams
   const onProjectClick = props.onProjectClick
   const onClearClick = props.onClearClick
   const projectList = projects.map((project) => {
@@ -23,7 +24,12 @@ function ProjectList(props) {
 
   const projectDetail = focusedProject == null ?
     <ProjectAdd addProjectToList={props.addProjectToList}/>
-    : <ProjectDetail project={focusedProject} onClearClick={onClearClick} stateToClear='focusedProject'/>
+    : <ProjectDetail
+      project={focusedProject}
+      onClearClick={onClearClick}
+      stateToClear='focusedProject'
+      teams={teams}
+    />
 
   return (
     <Grid columns={2} divided>

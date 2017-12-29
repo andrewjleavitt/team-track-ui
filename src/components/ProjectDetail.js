@@ -1,8 +1,10 @@
 import React from 'react'
 import Clear from './Clear'
+import ProjectAssignmentList from './ProjectAssignmentList'
 
 function ProjectDetail(props) {
   const project = props.project
+  const teams = props.teams
 
   return (
     <div>
@@ -11,6 +13,9 @@ function ProjectDetail(props) {
       <div>
         Status: {project.status}<br/>
         Health: {project.health}
+      </div>
+      <div>
+        <ProjectAssignmentList project={project} teams={teams}/>
       </div>
     </div>
   )

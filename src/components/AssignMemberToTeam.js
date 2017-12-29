@@ -36,6 +36,7 @@ class AssignMemberToTeam extends React.Component {
               placeholder='Select a team'
               options={teamOptions}
               onChange={this.handleSelectTeam}
+              name='selectedTeam'
             />
           </Form.Group>
           <Button type="submit">Assign</Button>

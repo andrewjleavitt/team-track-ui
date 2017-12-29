@@ -4,11 +4,30 @@ import {Menu, Container} from 'semantic-ui-react'
 function Navigation(props) {
   const focusedMenuItem = props.focusedMenuItem
   const onMenuItemClick = props.onMenuItemClick
-  const menuItemsArray = ['people', 'projects', 'teams']
+  const menuItemsArray = [
+    {
+      name: 'home',
+      focusName: null
+    },
+    {
+      name: 'people',
+      focusName: 'people'
+
+    },
+    {
+      name: 'projects',
+      focusName: 'projects'
+    },
+    {
+      name: 'teams',
+      focusName: 'teams'
+    }
+  ]
+
 
   const menu_items = menuItemsArray.map((item) => {
-    return <Menu.Item key={item} onClick={() => onMenuItemClick(item)}
-                      active={focusedMenuItem === item}>{item}</Menu.Item>
+    return <Menu.Item key={item.name} onClick={() => onMenuItemClick(item.focusName)}
+                      active={focusedMenuItem === item.focusName}>{item.name}</Menu.Item>
   })
 
   return (

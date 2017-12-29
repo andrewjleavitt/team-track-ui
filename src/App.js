@@ -1,21 +1,27 @@
 import React, {Component} from 'react';
+import {Container, Divider, Header} from 'semantic-ui-react'
 import Navigation from './components/Navigation'
 import TeamList from './components/TeamList'
 import TeamService from './lib/TeamService'
 import MemberService from './lib/MemberService'
-import ProjectService from './lib/ProjectService'
-
-import './App.css';
 import MemberList from "./components/MemberList";
 import ProjectList from './components/ProjectList'
-import {Container, Divider, Header} from 'semantic-ui-react'
+import ProjectService from './lib/ProjectService'
+import TeamStatusService from './lib/TeamStatusService'
+import TeamStatusList from './components/TeamStatusList'
+import './App.css';
 
 class App extends Component {
 
   state = {
     teams: [],
+    teamsLoaded: false,
     members: [],
+    membersLoaded: false,
     projects: [],
+    projectsLoaded: false,
+    teamStatuses: [],
+    teamStatusesLoaded: false,
     focusedTeam: null,
     focusedMember: null,
     focusedProject: null,
@@ -26,10 +32,11 @@ class App extends Component {
     TeamService.fetchTeams(this.teamsFetched)
     MemberService.fetch(this.membersFetched)
     ProjectService.fetchProjectList(this.projectsFetched)
+    TeamStatusService.fetchTeamStatusList(this.teamStatusesFetched)
   }
 
   teamsFetched = (data) => {
-    this.setState({teams: data})
+    this.setState({teams: data, teamsLoaded: true})
   }
 
   onTeamClick = (team) => {
@@ -41,8 +48,12 @@ class App extends Component {
     this.setState({focusedTeam: team})
   }
 
+  teamStatusesFetched = (data) => {
+    this.setState({teamStatuses: data, teamStatusesLoaded: true})
+  }
+
   membersFetched = (data) => {
-    this.setState({members: data})
+    this.setState({members: data, membersLoaded: true})
   }
 
   onMemberClick = (member) => {
@@ -55,7 +66,7 @@ class App extends Component {
   }
 
   projectsFetched = (data) => {
-    this.setState({projects: data})
+    this.setState({projects: data, projectsLoaded: true})
   }
 
   onProjectClick = (project) => {
@@ -85,6 +96,19 @@ class App extends Component {
             focusedMenuItem={this.state.focusedMenuItem}
           />
           <Divider/>
+          {this.state.focusedMenuItem !== null ? undefined : (
+            <Container>
+              <Header size='medium'>Home</Header>
+              <TeamStatusList
+                teamStatuses={this.state.teamStatuses}
+                teams={this.state.teams}
+                projects={this.state.projects}
+                teamsLoaded={this.state.teamsLoaded}
+                teamStatusesLoaded={this.state.teamStatusesLoaded}
+                projectsLoaded={this.state.projectsLoaded}
+              />
+            </Container>
+          )}
           {this.state.focusedMenuItem !== 'teams' ? undefined : (
             <Container>
               <Header size='medium'>Teams</Header>
@@ -119,6 +143,7 @@ class App extends Component {
                 addProjectToList={this.addProjectToList}
                 onProjectClick={this.onProjectClick}
                 onClearClick={this.onClearClick}
+                teams={this.state.teams}
               />
             </Container>
           )}

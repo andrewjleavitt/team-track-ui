@@ -30,13 +30,13 @@ class TeamAssignmentList extends React.Component {
   render() {
     const teams = this.props.teams
     const teamAssignments = this.state.teamAssignmentList.map((teamAssignment) => {
-      const team = teams.filter(team => team.id === teamAssignment.team_id)
+      const team = teams.find(team => team.id === teamAssignment.team_id)
       return (
         <List.Item key={teamAssignment.id}
         >
           <TeamAssignment
             teamAssignment={teamAssignment}
-            team={team[0]}
+            team={team}
           />
         </List.Item>
       )
